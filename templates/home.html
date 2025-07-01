@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Мій блог</title>
+</head>
+<body>
+    <h1>Ласкаво просимо в мій блог!</h1>
+    <ul>
+        {% for post in posts %}
+        <li><strong>{{ post.title }}</strong> — {{ post.content }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
