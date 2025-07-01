@@ -2,13 +2,16 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Мій блог</title>
+    <title>Блог</title>
 </head>
 <body>
-    <h1>Ласкаво просимо в мій блог!</h1>
+    <h1>Мій блог</h1>
+    <a href="{{ url_for('create') }}">+ Новий пост</a>
     <ul>
         {% for post in posts %}
         <li><strong>{{ post.title }}</strong> — {{ post.content }}</li>
+        {% else %}
+        <li>Поки що постів немає.</li>
         {% endfor %}
     </ul>
 </body>
