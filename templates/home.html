@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>Блог</title>
+{% extends 'base.html' %}
 
-</head>
-<body>
-    <h1>Мій блог</h1>
+{% block title %}Головна — Мій Блог{% endblock %}
 
-    <br>
-    <a href="{{ url_for('create') }}">+ Новий пост</a>
+{% block content %}
     <ul>
         {% for post in posts %}
         <li>
-                <strong>{{ post.title }}</strong> — {{ post.content }}<br>
-                <a href="{{ url_for('edit', id=post.id) }}">✏️ Редагувати</a>
-                <a href="{{ url_for('delete', id=post.id) }}" onclick="returnconfirm('Видалити пост?' );">🗑️ Видалити</a>
-
+            <strong>{{ post.title }}</strong> — {{ post.content }}<br>
+            <a href="{{ url_for('edit', id=post.id) }}">✏️ Редагувати</a> |
+            <a href="{{ url_for('delete', id=post.id) }}" onclick="return confirm('Видалити пост?');">🗑️ Видалити</a>
         </li>
         {% else %}
         <li>Поки що постів немає.</li>
         {% endfor %}
     </ul>
-        <br>
-        <a href="{{ url_for('about') }}"><h4>ℹ️ Про блог</h4></a></body>
-</html>
+{% endblock %}

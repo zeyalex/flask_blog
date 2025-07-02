@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="uk">
-  <head>
-    <meta charset="utf-8">
-    <title>Про блог</title>
-  </head>
-  <body>
-      <h1>Про цей блог</h1>
-      <p>Цей блог створено на мікрофреймворкі Flask з використанням Python . Ви можете додавати видаляти та редагувати свої пости.</p>
-      </br>
-      <a href="{{ url_for('home') }}">← На головну</a>
+{% extends 'base.html' %}
 
-  </body>
-</html>
+{% block title %}Про блог{% endblock %}
+
+{% block content %}
+    <h2>Про цей блог</h2>
+    <p>Це простий блог на Flask, створений для практики веб-розробки. Ви можете переглядати, додавати, редагувати та видаляти пости.</p>
+    <p>Блог використовує Flask, SQLAlchemy та PostgreSQL (на Railway).</p>
+{% endblock %}
