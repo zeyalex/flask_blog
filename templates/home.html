@@ -9,7 +9,11 @@
     <a href="{{ url_for('create') }}">+ Новий пост</a>
     <ul>
         {% for post in posts %}
-        <li><strong>{{ post.title }}</strong> — {{ post.content }}</li>
+        <li>
+                <strong>{{ post.title }}</strong> — {{ post.content }}<br>
+                <a href="{{ url_for('edit', id=post.id) }}">✏️ Редагувати</a>
+                <a href="{{ url_for('delete', id=post.id) }}" onclick="returnconfirm('Видалити пост?' );">🗑️ Видалити</a>
+        </li>
         {% else %}
         <li>Поки що постів немає.</li>
         {% endfor %}

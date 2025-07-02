@@ -40,6 +40,25 @@ def create():
              return redirect(url_for('home'))
         return render_template('create.html')
 
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    post = Post.query.get_or_404(id)
+    if request.method == 'POST':
+        post.title = request.form['title']
+        post.content = request.form['content']
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('edit.html', post=post)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    post = Post.query.get_or_404(id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('home'))
+
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     with app.app_context():
