@@ -40,6 +40,7 @@ def create():
              return redirect(url_for('home'))
         return render_template('create.html')
 
+# Редагування поста
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit(id):
     post = Post.query.get_or_404(id)
@@ -50,6 +51,7 @@ def edit(id):
         return redirect(url_for('home'))
     return render_template('edit.html', post=post)
 
+# Видалення поста
 @app.route('/delete/<int:id>')
 def delete(id):
     post = Post.query.get_or_404(id)
@@ -57,7 +59,10 @@ def delete(id):
     db.session.commit()
     return redirect(url_for('home'))
 
-
+# Про блог
+@app.route('/about')
+def  about():
+        return render_template('about.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

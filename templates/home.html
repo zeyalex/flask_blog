@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Блог</title>
+
 </head>
 <body>
     <h1>Мій блог</h1>
+
+    <br>
     <a href="{{ url_for('create') }}">+ Новий пост</a>
     <ul>
         {% for post in posts %}
@@ -13,10 +16,12 @@
                 <strong>{{ post.title }}</strong> — {{ post.content }}<br>
                 <a href="{{ url_for('edit', id=post.id) }}">✏️ Редагувати</a>
                 <a href="{{ url_for('delete', id=post.id) }}" onclick="returnconfirm('Видалити пост?' );">🗑️ Видалити</a>
+
         </li>
         {% else %}
         <li>Поки що постів немає.</li>
         {% endfor %}
     </ul>
-</body>
+        <br>
+        <a href="{{ url_for('about') }}"><h4>ℹ️ Про блог</h4></a></body>
 </html>
