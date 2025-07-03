@@ -10,7 +10,12 @@
     <ul>
         {% for post in posts %}
         <li>
-            <strong>{{ post.title }}</strong> — {{ post.content }}<br>
+            <strong>
+                <a href="{{ url_for('post_detail', id=post.id) }}">
+                    {{ post.title }}
+                </a>
+            </strong> —
+            {{ post.content[:100] }}{% if post.content|length > 100 %}...{% endif %} <br>
             <a href="{{ url_for('edit', id=post.id) }}">✏️ Редагувати</a> |
             <a href="{{ url_for('delete', id=post.id) }}" onclick="return confirm('Видалити пост?');">🗑️ Видалити</a>
         </li>

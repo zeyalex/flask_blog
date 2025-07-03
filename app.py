@@ -22,11 +22,18 @@ class Post(db.Model):
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
 
+
 # Головна сторінка з постами
 @app.route('/')
 def home():
     posts = Post.query.all()
     return render_template('home.html', posts=posts)
+    
+# Перегляд одного поста.
+@app.route('/post/<int:id>')
+def post_detail(id):
+    post = Post.query.get_or_404(id)
+    return render_template('post_detail.html', post=post)
 
 # Створення нового поста
 @app.route('/create', methods=['GET', 'POST'])
