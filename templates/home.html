@@ -3,6 +3,10 @@
 {% block title %}Головна — Мій Блог{% endblock %}
 
 {% block content %}
+    <div style="text-align: right; margin-bottom: 1rem;">
+        <a class="btn btn-primary btn-sm" href="{{ url_for('create') }}">+ Новий пост</a>
+    </div>
+
     <ul>
         {% for post in posts %}
         <li>
@@ -15,3 +19,4 @@
         {% endfor %}
     </ul>
 {% endblock %}
+
